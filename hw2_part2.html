@@ -1,0 +1,55 @@
+<html>
+<title>JavaScript</title>
+<body >
+<script>
+"use strict";
+function check_guess() {
+    if (colors.join().indexOf(guess_color)== -1) {
+        alert(COLOR+"\n\n"+PLEASE);
+        return false;
+    };
+    if ( color_chosen < guess_color) {
+       alert(GUESS+"\n\n"+HINT+"higher"+TM); 
+       return false;
+    };
+    if ( color_chosen > guess_color) {
+       alert(GUESS+"\n\n"+HINT+"lower"+TM); 
+       return false;
+    };
+    var myBody = document.getElementsByTagName("body")[0];
+    myBody.style.background=color_chosen;
+    alert(CONGRAT+"\n\n"+ITY+guesses+FINISH);
+    return true;
+}
+var COLOR = "Sorry, I don't recognize your color.";
+var PLEASE = "Please try again.";
+var GUESS = "Sorry, your guess is not correct!";
+var HINT = "Hint: your color is alphabetically ";
+var TM = " than mine.";
+var CONGRAT = "Congratulations! You have guessed the color!";
+var ITY = "It took you ";
+var FINISH = " guesses to finish the game!";
+var colors = ["aqua", "azure", "coral", "cyan", "gold", "gray", "lime", "peru", "pink", "plum"];
+var target;
+var guess_color;
+var finished = false;
+var guesses = 0;
+var color_chosen = '';
+
+var random_number = Math.random()*colors.length;
+var random_number_int = Math.floor(random_number);
+var color_index = random_number_int + 1
+color_chosen = colors[color_index];
+alert("the color chosen is " + color_chosen);
+
+while(!finished) {
+    guess_color = prompt("I am thinking of one of these colors" + "\n\n" + colors.join() + "\n\n" + "What color am I thinking of?");
+    guesses += 1;
+    finished = check_guess();
+}    
+
+
+
+</script>
+</body>
+</html>

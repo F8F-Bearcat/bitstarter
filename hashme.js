@@ -176,7 +176,7 @@ sjcl.hash.sha256 = function(a) {
     } else this.reset();
 };
 sjcl.hash.sha256.hash = function(a) {
-    return (new sjcl.hash.sha256).update(a).finalize();
+    return (new sjcl.hash.sha256()).update(a).finalize();
 };
 
 sjcl.hash.sha256.prototype = {
@@ -215,9 +215,9 @@ sjcl.hash.sha256.prototype = {
         var b = 0,
             c = 2,
             d;
-        a: for (; b < 64; c++) {
+        aj: for (; b < 64; c++) {
             for (d = 2; d * d <= c; d++)
-                if (c % d === 0) continue a;
+                if (c % d === 0) continue aj;
             if (b < 8) this.N[b] = a(Math.pow(c, 0.5));
             this.a[b] = a(Math.pow(c, 1 / 3));
             b++;
